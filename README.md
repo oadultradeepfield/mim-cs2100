@@ -1,6 +1,6 @@
 # Mim: MIPS Reference Data Improved (for CS2100 AY2024/25 S2)
 
-I found the given reference sheet quite difficult to use. I made a list that allows faster format conversion and reduces human errors when converting between binary, hex, and decimal.
+I found the given reference sheet quite difficult to use. I made a list that allows faster format conversion and reduces human errors when converting between binary, hex, and decimal. You can also get the PDF version [here](/mim_print.pdf) (this was created using [LaTeX](/mim_print.tex)).
 
 ## Register
 
