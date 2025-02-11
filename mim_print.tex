@@ -1,0 +1,50 @@
+\documentclass[a4paper, 10pt]{article}
+\usepackage[margin=0.75in]{geometry}
+\usepackage{booktabs}
+\usepackage{multirow}
+
+\usepackage{fontspec}
+\setromanfont[BoldFont={Gentium Basic Bold},ItalicFont={Gentium Italic}]{Gentium}
+\setmonofont[Scale=0.9]{Liberation Mono}
+
+\title{\textbf{Mim: MIPS Reference Data Improved \\(for CS2100 AY2024/25 S2)}}
+\date{}
+
+\begin{document}
+\maketitle
+\pagenumbering{gobble}
+\begin{table}[ht]
+    \centering
+    \renewcommand{\arraystretch}{1.2}
+    \begin{tabular}{|l|c|c|c|c|c|c|}
+        \hline
+        \multicolumn{7}{|c|}{\textbf{R-Format Instructions}} \\ \hline
+        \textbf{Mnemonic} & \texttt{opcode (6)} & \texttt{rs (5)} & \texttt{rt (5)} & \texttt{rd (5)} & \texttt{shamt (5)} & \texttt{funct (6)} \\ \hline
+        \texttt{add rd, rs, rt}    & 000000 & \texttt{rs}    & \texttt{rt}    & \texttt{rd}    & 00000 & 100000 \\ \hline
+        \texttt{sub rd, rs, rt}    & 000000 & \texttt{rs}    & \texttt{rt}    & \texttt{rd}    & 00000 & 100010 \\ \hline
+        \texttt{sll rd, rt, shamt} & 000000 & 00000         & \texttt{rt}    & \texttt{rd}    & \texttt{shamt} & 000000 \\ \hline
+        \texttt{srl rd, rt, shamt} & 000000 & 00000         & \texttt{rt}    & \texttt{rd}    & \texttt{shamt} & 000010 \\ \hline
+        \texttt{and rd, rs, rt}    & 000000 & \texttt{rs}    & \texttt{rt}    & \texttt{rd}    & 00000 & 100100 \\ \hline
+        \texttt{or rd, rs, rt}     & 000000 & \texttt{rs}    & \texttt{rt}    & \texttt{rd}    & 00000 & 100101 \\ \hline
+        \texttt{xor rd, rs, rt}    & 000000 & \texttt{rs}    & \texttt{rt}    & \texttt{rd}    & 00000 & 100110 \\ \hline
+        \texttt{nor rd, rs, rt}    & 000000 & \texttt{rs}    & \texttt{rt}    & \texttt{rd}    & 00000 & 100111 \\ \hline
+        \texttt{slt rd, rs, rt}    & 000000 & \texttt{rs}    & \texttt{rt}    & \texttt{rd}    & 00000 & 101010 \\ \hline
+        \multicolumn{7}{|c|}{\textbf{I-Format Instructions}} \\ \hline
+        \textbf{Mnemonic} & \texttt{opcode (6)} & \texttt{rs (5)} & \texttt{rt (5)} & \multicolumn{3}{c|}{\texttt{immediate (16)}} \\ \hline
+        \texttt{beq rs, rt, relative address}   & 000100 & \texttt{rs}   & \texttt{rt}   & \multicolumn{3}{c|}{\texttt{relative address}}  \\ \hline
+        \texttt{bne rs, rt, relative address}   & 000101 & \texttt{rs}   & \texttt{rt}   & \multicolumn{3}{c|}{\texttt{relative address}} \\ \hline
+        \texttt{addi rt, rs, immediate}         & 001000 & \texttt{rs}   & \texttt{rt}   & \multicolumn{3}{c|}{\texttt{relative address}}\\ \hline
+        \texttt{andi rt, rs, immediate}         & 001100 & \texttt{rs}   & \texttt{rt}   & \multicolumn{3}{c|}{\texttt{relative address}}  \\ \hline
+        \texttt{ori rt, rs, immediate}          & 001101 & \texttt{rs}   & \texttt{rt}   & \multicolumn{3}{c|}{\texttt{relative address}}  \\ \hline
+        \texttt{xori rt, rs, immediate}         & 001110 & \texttt{rs}   & \texttt{rt}   & \multicolumn{3}{c|}{\texttt{relative address}}  \\ \hline
+        \texttt{lui rt, immediate}              & 001111 & 00000         & \texttt{rt}   & \multicolumn{3}{c|}{\texttt{relative address}}  \\ \hline
+        \texttt{lb rt, immediate(rs)}           & 100000 & \texttt{rs}   & \texttt{rt}   & \multicolumn{3}{c|}{\texttt{relative address}}  \\ \hline
+        \texttt{lw rt, immediate(rs)}           & 100011 & \texttt{rs}   & \texttt{rt}   & \multicolumn{3}{c|}{\texttt{relative address}}  \\ \hline
+        \texttt{sb rt, immediate(rs)}           & 101000 & \texttt{rs}   & \texttt{rt}   & \multicolumn{3}{c|}{\texttt{relative address}}  \\ \hline
+        \texttt{sw rt, immediate(rs)}           & 101011 & \texttt{rs}   & \texttt{rt}   & \multicolumn{3}{c|}{\texttt{relative address}}  \\ \hline
+        \multicolumn{7}{|c|}{\textbf{J-Format Instructions}} \\ \hline
+        \textbf{Mnemonic} & \texttt{opcode (6)} & \multicolumn{5}{c|}{\texttt{address (26)}} \\ \hline
+        \texttt{j address}   & 000010  & \multicolumn{5}{c|}{26-bit target address (shifted left by 2 when used)} \\ \hline
+    \end{tabular}
+\end{table}
+\end{document}
