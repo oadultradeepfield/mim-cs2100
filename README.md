@@ -1,4 +1,4 @@
-# Mim: MIPS Reference Data Improved (for CS2100)
+# Mim: MIPS Reference Data Improved (for CS2100 AY2024/25 S2)
 
 I found the given reference sheet quite difficult to use. I made a list that allows faster format conversion and reduces human errors when converting between binary, hex, and decimal.
 
@@ -34,19 +34,19 @@ The R-format always has an `opcode` of 0. The instruction can be determined usin
 
 The immediate is always a 16-bit integer. You need to use load upper immediate (`lui`) to extend it to 32 bits.
 
-| Mnemonic                       | `opcode` (6) | `rs` (5) | `rt` (5) | `immediate` (16) |
-| ------------------------------ | ------------ | -------- | -------- | ---------------- |
-| `beq rs, rt, relative address` | 000100       | `rs`     | `rt`     | `address`        |
-| `bne rs, rt, relative address` | 000101       | `rs`     | `rt`     | `address`        |
-| `addi rt, rs, immediate`       | 001000       | `rs`     | `rt`     | `immediate`      |
-| `andi rt, rs, immediate`       | 001100       | `rs`     | `rt`     | `immediate`      |
-| `ori rt, rs, immediate`        | 001101       | `rs`     | `rt`     | `immediate`      |
-| `xori rt, rs, immediate`       | 001110       | `rs`     | `rt`     | `immediate`      |
-| `lui rt, immediate`            | 001111       | 00000    | `rt`     | `immediate`      |
-| `lb rt, immediate(rs)`         | 100000       | `rs`     | `rt`     | `immediate`      |
-| `lw rt, immediate(rs)`         | 100011       | `rs`     | `rt`     | `immediate`      |
-| `sb rt, immediate(rs)`         | 101000       | `rs`     | `rt`     | `immediate`      |
-| `sw rt, immediate(rs)`         | 101011       | `rs`     | `rt`     | `immediate`      |
+| Mnemonic                       | `opcode` (6) | `rs` (5) | `rt` (5) | `immediate` (16)   |
+| ------------------------------ | ------------ | -------- | -------- | ------------------ |
+| `beq rs, rt, relative address` | 000100       | `rs`     | `rt`     | `relative address` |
+| `bne rs, rt, relative address` | 000101       | `rs`     | `rt`     | `relative address` |
+| `addi rt, rs, immediate`       | 001000       | `rs`     | `rt`     | `immediate`        |
+| `andi rt, rs, immediate`       | 001100       | `rs`     | `rt`     | `immediate`        |
+| `ori rt, rs, immediate`        | 001101       | `rs`     | `rt`     | `immediate`        |
+| `xori rt, rs, immediate`       | 001110       | `rs`     | `rt`     | `immediate`        |
+| `lui rt, immediate`            | 001111       | 00000    | `rt`     | `immediate`        |
+| `lb rt, immediate(rs)`         | 100000       | `rs`     | `rt`     | `immediate`        |
+| `lw rt, immediate(rs)`         | 100011       | `rs`     | `rt`     | `immediate`        |
+| `sb rt, immediate(rs)`         | 101000       | `rs`     | `rt`     | `immediate`        |
+| `sw rt, immediate(rs)`         | 101011       | `rs`     | `rt`     | `immediate`        |
 
 ## J-Format
 
