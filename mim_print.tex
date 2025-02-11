@@ -2,21 +2,51 @@
 \usepackage[margin=0.75in]{geometry}
 \usepackage{booktabs}
 \usepackage{multirow}
+\usepackage{tabularx}
 
 \usepackage{fontspec}
 \setromanfont[BoldFont={Gentium Basic Bold},ItalicFont={Gentium Italic}]{Gentium}
-\setmonofont[Scale=0.9]{Liberation Mono}
+\setmonofont[Scale=0.85]{Liberation Mono}
 
-\title{\textbf{Mim: MIPS Reference Data Improved \\(for CS2100 AY2024/25 S2)}}
+\title{\vspace{-1em}\textbf{Mim: MIPS Reference Data Improved \\(for CS2100 AY2024/25 S2)}\vspace{-1em}}
 \date{}
 
 \begin{document}
 \maketitle
 \pagenumbering{gobble}
+
+\section*{Register Encoding}
+
+Aside from the constant zeroes, we have \texttt{t} for temporaries and \texttt{s} for saved temporaries.
+
+\begin{table}[ht]
+  \centering
+  \small
+  \begin{tabular}{*{9}{c}}
+    \toprule
+    \texttt{\$zero} & \texttt{\$t0} & \texttt{\$t1} & \texttt{\$t2} & \texttt{\$t3} & \texttt{\$t4} & \texttt{\$t5} & \texttt{\$t6} & \texttt{\$t7} \\ \midrule
+    00000  & 01000 & 01001 & 01010 & 01011 & 01100 & 01101 & 01110 & 01111 \\ 
+    \bottomrule
+  \end{tabular}
+  
+  \vspace{2ex}
+  
+  \begin{tabular}{*{10}{c}}
+    \toprule
+    \texttt{\$t8} & \texttt{\$t9} & \texttt{\$s0} & \texttt{\$s1} & \texttt{\$s2} & \texttt{\$s3} & \texttt{\$s4} & \texttt{\$s5} & \texttt{\$s6} & \texttt{\$s7} \\ \midrule
+    11000 & 11001 & 10000 & 10001 & 10010 & 10011 & 10100 & 10101 & 10110 & 10111 \\ 
+    \bottomrule
+  \end{tabular}
+\end{table}
+
+\section*{Instruction Encoding}
+
+I found the given reference sheet quite difficult to use. I made a list that allows faster format conversion and reduces human errors when converting between binary, hex, and decimal.
+
 \begin{table}[ht]
     \centering
     \renewcommand{\arraystretch}{1.2}
-    \begin{tabular}{|l|c|c|c|c|c|c|}
+    \begin{tabularx}{\textwidth}{|X|c|c|c|c|c|c|}
         \hline
         \multicolumn{7}{|c|}{\textbf{R-Format Instructions}} \\ \hline
         \textbf{Mnemonic} & \texttt{opcode (6)} & \texttt{rs (5)} & \texttt{rt (5)} & \texttt{rd (5)} & \texttt{shamt (5)} & \texttt{funct (6)} \\ \hline
@@ -33,18 +63,18 @@
         \textbf{Mnemonic} & \texttt{opcode (6)} & \texttt{rs (5)} & \texttt{rt (5)} & \multicolumn{3}{c|}{\texttt{immediate (16)}} \\ \hline
         \texttt{beq rs, rt, relative address}   & 000100 & \texttt{rs}   & \texttt{rt}   & \multicolumn{3}{c|}{\texttt{relative address}}  \\ \hline
         \texttt{bne rs, rt, relative address}   & 000101 & \texttt{rs}   & \texttt{rt}   & \multicolumn{3}{c|}{\texttt{relative address}} \\ \hline
-        \texttt{addi rt, rs, immediate}         & 001000 & \texttt{rs}   & \texttt{rt}   & \multicolumn{3}{c|}{\texttt{relative address}}\\ \hline
-        \texttt{andi rt, rs, immediate}         & 001100 & \texttt{rs}   & \texttt{rt}   & \multicolumn{3}{c|}{\texttt{relative address}}  \\ \hline
-        \texttt{ori rt, rs, immediate}          & 001101 & \texttt{rs}   & \texttt{rt}   & \multicolumn{3}{c|}{\texttt{relative address}}  \\ \hline
-        \texttt{xori rt, rs, immediate}         & 001110 & \texttt{rs}   & \texttt{rt}   & \multicolumn{3}{c|}{\texttt{relative address}}  \\ \hline
-        \texttt{lui rt, immediate}              & 001111 & 00000         & \texttt{rt}   & \multicolumn{3}{c|}{\texttt{relative address}}  \\ \hline
-        \texttt{lb rt, immediate(rs)}           & 100000 & \texttt{rs}   & \texttt{rt}   & \multicolumn{3}{c|}{\texttt{relative address}}  \\ \hline
-        \texttt{lw rt, immediate(rs)}           & 100011 & \texttt{rs}   & \texttt{rt}   & \multicolumn{3}{c|}{\texttt{relative address}}  \\ \hline
-        \texttt{sb rt, immediate(rs)}           & 101000 & \texttt{rs}   & \texttt{rt}   & \multicolumn{3}{c|}{\texttt{relative address}}  \\ \hline
-        \texttt{sw rt, immediate(rs)}           & 101011 & \texttt{rs}   & \texttt{rt}   & \multicolumn{3}{c|}{\texttt{relative address}}  \\ \hline
+        \texttt{addi rt, rs, immediate}         & 001000 & \texttt{rs}   & \texttt{rt}   & \multicolumn{3}{c|}{\texttt{immediate}}\\ \hline
+        \texttt{andi rt, rs, immediate}         & 001100 & \texttt{rs}   & \texttt{rt}   & \multicolumn{3}{c|}{\texttt{immediate}}  \\ \hline
+        \texttt{ori rt, rs, immediate}          & 001101 & \texttt{rs}   & \texttt{rt}   & \multicolumn{3}{c|}{\texttt{immediate}}  \\ \hline
+        \texttt{xori rt, rs, immediate}         & 001110 & \texttt{rs}   & \texttt{rt}   & \multicolumn{3}{c|}{\texttt{immediate}}  \\ \hline
+        \texttt{lui rt, immediate}              & 001111 & 00000         & \texttt{rt}   & \multicolumn{3}{c|}{\texttt{immediate}}  \\ \hline
+        \texttt{lb rt, immediate(rs)}           & 100000 & \texttt{rs}   & \texttt{rt}   & \multicolumn{3}{c|}{\texttt{immediate}}  \\ \hline
+        \texttt{lw rt, immediate(rs)}           & 100011 & \texttt{rs}   & \texttt{rt}   & \multicolumn{3}{c|}{\texttt{immediate}}  \\ \hline
+        \texttt{sb rt, immediate(rs)}           & 101000 & \texttt{rs}   & \texttt{rt}   & \multicolumn{3}{c|}{\texttt{immediate}}  \\ \hline
+        \texttt{sw rt, immediate(rs)}           & 101011 & \texttt{rs}   & \texttt{rt}   & \multicolumn{3}{c|}{\texttt{immediate}}  \\ \hline
         \multicolumn{7}{|c|}{\textbf{J-Format Instructions}} \\ \hline
         \textbf{Mnemonic} & \texttt{opcode (6)} & \multicolumn{5}{c|}{\texttt{address (26)}} \\ \hline
         \texttt{j address}   & 000010  & \multicolumn{5}{c|}{26-bit target address (shifted left by 2 when used)} \\ \hline
-    \end{tabular}
+    \end{tabularx}
 \end{table}
 \end{document}

@@ -4,7 +4,7 @@ I found the given reference sheet quite difficult to use. I made a list that all
 
 ## Register
 
-Aside from the constant zeroes, we have `t` for temporaries and `s` for saved registers.
+Aside from the constant zeroes, we have `t` for temporaries and `s` for saved temporaries.
 
 | `$zero` | `$t0` | `$t1` | `$t2` | `$t3` | `$t4` | `$t5` | `$t6` | `$t7` |
 | ------- | ----- | ----- | ----- | ----- | ----- | ----- | ----- | ----- |
