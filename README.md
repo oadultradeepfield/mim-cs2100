@@ -56,6 +56,21 @@ The memory address is always 32 bits. However, since it must be well-aligned wit
 | ----------- | ------------ | --------------------------------------------------- |
 | `j address` | 000010       | 26-bit target address (shifted left by 2 when used) |
 
+## Extra: Binary and Hexadecimal Conversion Table
+
+This table would be helpful when encoding/decoding instructions so we can group every four bits in the binary representation to a single hexadecimal digit.
+
+| Binary | Hexadecimal | Binary | Hexadecimal |
+| ------ | ----------- | ------ | ----------- |
+| 0000   | 0           | 1000   | 8           |
+| 0001   | 1           | 1001   | 9           |
+| 0010   | 2           | 1010   | A           |
+| 0011   | 3           | 1011   | B           |
+| 0100   | 4           | 1100   | C           |
+| 0101   | 5           | 1101   | D           |
+| 0110   | 6           | 1110   | E           |
+| 0111   | 7           | 1111   | F           |
+
 ## License
 
 This project is licensed under the MIT License. See the [LICENSE](/LICENSE) file for details.
